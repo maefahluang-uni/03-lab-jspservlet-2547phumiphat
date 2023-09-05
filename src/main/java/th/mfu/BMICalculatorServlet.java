@@ -25,7 +25,7 @@ public class BMICalculatorServlet extends HttpServlet{
         double weight = Double.parseDouble("w1");
         double height = Double.parseDouble("h1");
         // TODO: handle exception
-        double bmi = (weight/(height*height));
+        double bmi = calculateBMI(weight, height);
         String build = determineBuild(bmi);
 
         request.setAttribute("BMI",Math.round(bmi));
@@ -39,13 +39,10 @@ public class BMICalculatorServlet extends HttpServlet{
         response.getWriter().println("Please provide weight and height parameters.");
     }
 }
-        
-        //TODO: determine the built from BMI
-        
-        //TODO: add bmi and built to the request's attribute
 
-        //TODO: forward to jsp
-
+    private double calculateBMI(double weight, double height){
+        return weight/((height*height));
+    }
     
     private String determineBuild(double bmi) {
         if (bmi < 18.5) {
