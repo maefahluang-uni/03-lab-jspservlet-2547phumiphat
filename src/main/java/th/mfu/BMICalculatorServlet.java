@@ -1,8 +1,6 @@
 package th.mfu;
 
 import java.io.IOException;
-import java.util.function.ToDoubleBiFunction;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
