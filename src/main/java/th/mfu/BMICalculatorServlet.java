@@ -14,16 +14,16 @@ public class BMICalculatorServlet extends HttpServlet{
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //TODO: get parameter from request: "weight" and "height"
-        String w1 = request.getParameter("weight");
-        String h1 = request.getParameter("height");
+        String wStr = request.getParameter("weight");
+        String hStr = request.getParameter("height");
 
         //TODO: calculate bmi
-        if(w1 != null && !w1.isEmpty() && h1 != null && !h1.isEmpty()){
+        if(wStr != null && !wStr.isEmpty() && hStr != null && !hStr.isEmpty()){
         try {
-        double weight = Double.parseDouble("w1");
-        double height = Double.parseDouble("h1");
+        Double weight = Double.parseDouble(wStr);
+        Double height = Double.parseDouble(hStr);
         // TODO: handle exception
-        double bmi = calculateBMI(weight, height);
+        Double bmi = calculateBMI(weight, height);
         String build = determineBuild(bmi);
 
         request.setAttribute("BMI",Math.round(bmi));
@@ -38,11 +38,11 @@ public class BMICalculatorServlet extends HttpServlet{
     }
 }
 
-    private double calculateBMI(double weight, double height){
-        return weight/((height*height));
+    private Double calculateBMI(Double weight, Double height){
+        return weight/(height*height);
     }
     
-    private String determineBuild(double bmi) {
+    private String determineBuild(Double bmi) {
         if (bmi < 18.5) {
             return "underweight";
         } else if (bmi < 25) {
